@@ -22,7 +22,7 @@ function prompt_pragmata_setup {
   add-zsh-hook precmd prompt_pragmata_precmd
 
   zstyle ':prezto:module:git:info' verbose 'yes'
-  zstyle ':prezto:module:git:info:branch' format '%F{blue}'
+  zstyle ':prezto:module:git:info:branch' format '%F{blue}%b '
   zstyle ':prezto:module:git:info:added' format '%F{green}%b '
   zstyle ':prezto:module:git:info:modified' format '%F{cyan}%b '
   zstyle ':prezto:module:git:info:deleted' format '%F{red}%b  '
@@ -40,9 +40,10 @@ _linedown=$'\e[1B'
 
   PROMPT="
 
-${LAMBDA} %F{$USERCOLOR}%b%n %F{magenta}[%3~] "'${(e)git_info[prompt]}'"
+  ${LAMBDA} %F{$USERCOLOR}%b%n %F{magenta}[%3~] "'${(e)git_info[prompt]}${(e)git_info[rprompt]}'"
 %F{yellow}→  "
-  RPROMPT="%{${_lineup}%}"'${(e)git_info[rprompt]}'"%{${_linedown}%}"
+  #RPROMPT="%{${_lineup}%}"'${(e)git_info[rprompt]}'"%{${_linedown}%}"
+  RPROMPT=""
 }
 
 prompt_pragmata_setup "$@"
