@@ -27,6 +27,13 @@ alias -g ...="../.."
 alias -g ....="../../.."
 alias -g .....="../../../.."
 
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+if which pyenv-virtualenv-init > /dev/null 2>&1; then
+  eval "$(pyenv virtualenv-init -)"
+fi
+
 # Show lines of a specified file $3 starting at $1, ending with $2
 showLines(){
   sed -n "$1,$2p" $3
