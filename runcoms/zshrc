@@ -41,6 +41,10 @@ function dbash { docker exec -it $1 /bin/bash; }
 function dash { docker exec -it $1 /bin/ash; }
 function dexec { docker exec -it $2 $1; }
 
+# Add rbenv to zsh
+if which rbenv > /dev/null; then 
+  eval "$(rbenv init -)";
+fi
 # Python environments
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
