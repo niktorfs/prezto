@@ -41,6 +41,11 @@ function dbash { docker exec -it $1 /bin/bash; }
 function dash { docker exec -it $1 /bin/ash; }
 function dexec { docker exec -it $2 $1; }
 
+alias kc="kubectl"
+
+function dbuild_minikube {
+  eval $(minikube docker-env) && $1
+}
 # Add rbenv to zsh
 if which rbenv > /dev/null; then 
   eval "$(rbenv init -)";
@@ -55,7 +60,7 @@ fi
 
 # bash completion
 if [[ -f /usr/local/etc/bash_completion ]]; then
-  source /usr/local/etc/bash_completion
+#  source /usr/local/etc/bash_completion
 fi
 
 # docker machine
@@ -88,4 +93,11 @@ close(){
   fi
 }
 
+# VIM modes
+bindkey -v
+export EDITOR=vim
+
 source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
