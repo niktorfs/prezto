@@ -4,7 +4,7 @@ ZSH_THEME="pragmata"
 HIST_STAMPS="dd.mm.yyyy"
 plugins=(git)
 
-# User configuration
+
 export NODEVERSION=$(node -v | cut -c 2-)
 export NODEBIN=/usr/local/Cellar/node/$NODEVERSION/bin
 export PATH=/usr/local/bin:$HOME/bin:/usr/local/sbin:$NODEBIN:$PATH
@@ -59,9 +59,9 @@ if which pyenv-virtualenv-init > /dev/null 2>&1; then
 fi
 
 # bash completion
-if [[ -f /usr/local/etc/bash_completion ]]; then
+#if [[ -f /usr/local/etc/bash_completion ]]; then
 #  source /usr/local/etc/bash_completion
-fi
+#fi
 
 # docker machine
 if [[ $(docker-machine status default) != "Stopped" ]]; then
@@ -101,3 +101,4 @@ source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
+[ -f "/Users/nik/.ghcup/env" ] && source "/Users/nik/.ghcup/env" # ghcup-env
